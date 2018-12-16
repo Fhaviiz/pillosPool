@@ -1,26 +1,33 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Pillos</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <script src="main.js"></script>    
+    <script src="main.js"></script>
 </head>
+
 <body>
 
-     
-    <header >
-        <h1>Siguiente bola:</h1><div id="SiguienteBola" class="bola b1"></div>
+
+    <header>
+        <h1>Siguiente bola:</h1>
+        <div id="SiguienteBola" class="bola b1"></div>
         <div id="Opciones">
-            <a href="#bolasEchadas" rel="modal:open"><div class="botonesOpcion" id="BolaEchada">Bola echada</div></a>
-            <a href="#agregaPillo" rel="modal:open"><div class="botonesOpcion" id="AgregarPillo">Agregar pillos</div></a>
-            <div class="botonesOpcion" id ="PasarTurno" onclick="pasarTurno()">Siguiente turno</div>
+            <a href="#bolasEchadas" rel="modal:open">
+                <div class="botonesOpcion" id="BolaEchada">Bola echada</div>
+            </a>
+            <a href="#agregaPillo" rel="modal:open">
+                <div class="botonesOpcion" id="AgregarPillo">Agregar pillos</div>
+            </a>
+            <div class="botonesOpcion" id="PasarTurno" onclick="pasarTurno()">Siguiente turno</div>
         </div>
     </header>
 
@@ -59,21 +66,21 @@
         <!--Se cargan los jugadores-->
     </div>
 
-    
+
     <script>
-        var jugadores =[{}];
-        var VG_bolas_echadas =[];
+        var jugadores = [{}];
+        var VG_bolas_echadas = [];
         var cant_jugadores = 1;
         var VG_turno = 1;
         let searchParams = new URLSearchParams(window.location.search)
-        
-        
-        for (let parametro of searchParams.values()){
-            jugadores[cant_jugadores-1]={
+
+
+        for (let parametro of searchParams.values()) {
+            jugadores[cant_jugadores - 1] = {
                 "nombre": parametro,
                 "bolas": [],
-                "puntaje" : 0,
-                "pillos" : 0,
+                "puntaje": 0,
+                "pillos": 0,
                 "posicion": 1
             };
 
@@ -85,101 +92,99 @@
                             <div class="Total">Total: 0</div>
                         </div>`
             $("#Jugadores").append(aux_text);
-            
+
             cant_jugadores++;
         }
 
-        function selecionarBola(bola){
+        function selecionarBola(bola) {
             if (!bola.classList.contains("echada")) {
                 bola.classList.toggle("seleccionada");
             }
-            
+
         }
 
-        function asigarPuntos(){
-            let jugador_activo = jugadores[VG_turno -1];
+        function asigarPuntos() {
+            let jugador_activo = jugadores[VG_turno - 1];
             let aux_entro = false;
             let puntos = 0;
             let turno = $(".Turno");
             let aux_sigbola = 1;
-            
-            $(".Bolas_Modal .bola").each((index,element)=>{
+
+            $(".Bolas_Modal .bola").each((index, element) => {
                 if (element.classList.contains("seleccionada")) {
-                    VG_bolas_echadas.push(index+1);
-                    jugador_activo.bolas.push(index+1);
+                    VG_bolas_echadas.push(index + 1);
+                    jugador_activo.bolas.push(index + 1);
                     VG_bolas_echadas.sort();
-                    let class_Bola = "b"+ (index+1);
+                    let class_Bola = "b" + (index + 1);
                     let bola = document.createElement("div");
-                    bola.className="bola " + class_Bola;
+                    bola.className = "bola " + class_Bola;
                     turno[0].childNodes[5].append(bola);
-                    puntos += index+1;
+                    puntos += index + 1;
                     aux_entro = true;
                     element.classList.remove("seleccionada");
                     element.classList.add("echada");
                     //element.classList.replace("seleccionada", "echada"); ¬¬ 
-                    
+
                     let siguienteBola = document.getElementById("SiguienteBola");
                     if (siguienteBola.classList.contains(class_Bola)) {
-                        siguienteBola.classList.remove(class_Bola); 
-                        
-                        aux_sigbola = index + 1 ;
-                        
-                        for (i = 1; i< 16;i++){
-                            if (VG_bolas_echadas.includes(i)){
-                            }
-                            else{
+                        siguienteBola.classList.remove(class_Bola);
+
+                        aux_sigbola = index + 1;
+
+                        for (i = 1; i < 16; i++) {
+                            if (VG_bolas_echadas.includes(i)) {} else {
                                 aux_sigbola = i;
                                 break;
                             }
                         }
-                        siguienteBola.classList.add("b" + aux_sigbola); 
+                        siguienteBola.classList.add("b" + aux_sigbola);
                     }
                 }
             });
             jugador_activo.puntaje += puntos;
-            if (aux_entro){
-                turno[0].childNodes[9].innerHTML="TOTAL: " + (jugador_activo.puntaje - jugador_activo.pillos) ;
+            if (aux_entro) {
+                turno[0].childNodes[9].innerHTML = "TOTAL: " + (jugador_activo.puntaje - jugador_activo.pillos);
             }
-            if (VG_bolas_echadas.length == 15){
+            if (VG_bolas_echadas.length == 15) {
                 //alert(JSON.stringify(jugadores));
                 alert("fin");
             }
         }
 
-        function asigarPillos(){
-            let jugador_activo = jugadores[VG_turno -1];
+        function asigarPillos() {
+            let jugador_activo = jugadores[VG_turno - 1];
             jugador_activo.pillos += parseInt($("#cant_pillos").val());
             let turno = $(".Turno");
-            turno[0].childNodes[7].innerHTML="PILLOS: " + jugador_activo.pillos ;
-            turno[0].childNodes[9].innerHTML="TOTAL: " + (jugador_activo.puntaje - jugador_activo.pillos) ;
+            turno[0].childNodes[7].innerHTML = "PILLOS: " + jugador_activo.pillos;
+            turno[0].childNodes[9].innerHTML = "TOTAL: " + (jugador_activo.puntaje - jugador_activo.pillos);
             $("#cant_pillos").val(0);
             pasarTurno();
         }
 
-        function pasarTurno(){
+        function pasarTurno() {
             VG_turno++;
 
-            if (VG_turno == cant_jugadores){
+            if (VG_turno == cant_jugadores) {
                 VG_turno = 1;
                 var siguienteTurno = $("#Jugador1");
                 $(".Turno").removeClass("Turno");
                 siguienteTurno.addClass("Turno");
-            }else{
+            } else {
                 var siguienteTurno = $(".Turno").next();
                 $(".Turno").removeClass("Turno");
                 siguienteTurno.addClass("Turno");
             }
         }
 
-        function pasarTurno2(){
+        function pasarTurno2() {
             VG_turno++;
 
-            if (VG_turno == cant_jugadores){
+            if (VG_turno == cant_jugadores) {
                 VG_turno = 1;
                 var siguienteTurno = $("#Jugador1");
                 $(".Turno").removeClass("Turno");
                 siguienteTurno.addClass("Turno");
-            }else{
+            } else {
                 var siguienteTurno = $(".Turno").next();
                 $(".Turno").removeClass("Turno");
                 siguienteTurno.addClass("Turno");
@@ -187,4 +192,5 @@
         }
     </script>
 </body>
+
 </html>
