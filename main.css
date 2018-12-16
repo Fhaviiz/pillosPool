@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css?family=Staatliches');
+
+
+*{
+    margin:0;
+    padding:0;
+}
+
+#Opciones a{
+    text-decoration: none;
+    color:white;
+}
+body{
+    background-color: #666;
+    font-family: Staatliches, arial;
+    width: 80%;
+    margin: auto;
+}
+
+header{
+    background-color: #008000;
+    margin: 30px 20px;
+    padding: 30px;
+    border: 4px solid black;
+    border-radius: 20px;
+}
+header h1{
+    color: white;
+    text-align: center;
+    font-size: 50px;
+}
+
+header:after{
+    clear: both;
+    content: "";
+    display: block;
+
+}
+
+#SiguienteBola{
+    margin: auto;
+    display: table;
+}
+#Opciones{
+    margin-top: 20px;
+}
+
+.botonesOpcion{
+    margin:5px;
+    border: 1px solid black;
+    padding: 3px 5px;
+    border-radius: 5px;
+    text-align: center;
+    background: #804000;
+    color:white;
+    cursor: pointer;
+}
+
+
+#agregaPillo, #bolasEchadas{
+    font-size: 25px;
+    
+}
+
+#agregaPillo input {
+    font-size: 50px;
+    margin : 20px;
+    border: 10px solid;
+    border-radius: 10px;
+}
+
+.Jugador{
+    background-color:red;
+    
+    border: 4px solid white;
+    border-radius: 5px;
+    margin: 30px 20px;
+    color: white;
+}
+
+.Jugador.Turno{
+    background-color: #ebebd6;
+    color:#0000a0 !important;
+}
+
+.Nombre{
+    font-size: 30px;
+    margin-left:10px;
+}
+
+.Posicion{
+    text-align: center;
+    width: 50px;
+    height:37px;
+    background-color: #d9ea02;
+    font-size: 30px;
+    float: right;
+    margin-top: -55px;
+    margin-right: -22px;
+    border: 5px double black;
+    border-radius: 25%;
+    color:black;
+}
+
+.Bolas, .Bolas_Modal{
+    text-align: center;
+    font-size: 22px !important;
+}
+
+.bola{
+    display: inline-block;
+    border: 3px solid black;
+    padding: 12px 10px;
+    border-radius: 50%;
+    color:black;
+
+    
+}
+
+.bola.echada{
+    opacity: 0.5;
+}
+
+.bola.seleccionada{
+    border: 8px solid red;
+}
+
+.bola.b1{
+    background-color: #ffa248;
+}
+
+.bola.b2{
+    background-color: #214fb1;
+}
+
+.bola.b3{
+    background-color: #bd2a29;
+}
+
+.bola.b4{
+    background-color: #703594;
+}
+.bola.b5{
+    background-color: #fe7216;
+}
+.bola.b6{
+    background-color: #15823f;
+}
+.bola.b7{
+    background-color: #5b391d;
+}
+.bola.b8{
+    background-color: black;
+    
+}
+
+.bola.b9{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 20%,#ffa248 20%,#ffa248 50%,#ffa248 80%,#ffffff 80%,#ffffff 100%);
+}
+
+.bola.b10{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 20%,#214fb1 20%,#214fb1 50%,#214fb1 80%,#ffffff 80%,#ffffff 100%);
+}
+.bola.b11{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 20%,#bd2a29 20%,#bd2a29 50%,#bd2a29 80%,#ffffff 80%,#ffffff 100%);
+}
+.bola.b12{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 20%,#703594 20%,#703594 50%,#703594 80%,#ffffff 80%,#ffffff 100%);
+}
+.bola.b13{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 20%,#fe7216 20%,#fe7216 50%,#fe7216 80%,#ffffff 80%,#ffffff 100%);
+}
+.bola.b14{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 20%,#15823f 20%,#15823f 50%,#15823f 80%,#ffffff 80%,#ffffff 100%);
+}
+.bola.b15{
+    background: linear-gradient(to bottom, #ffffff 0%,#ffffff 20%,#5b391d 20%,#5b391d 50%,#5b391d 80%,#ffffff 80%,#ffffff 100%);
+}
+
+.bola::before{
+    font-size: 15x;
+    background-color: white;
+    border: 1px solid black;
+    padding: 1px 8px;
+    border-radius: 50%;
+}
+.bola.b1::before{
+    content: "1";
+}
+
+.bola.b2::before{
+    content: "2";
+}
+.bola.b3::before{
+    content: "3";
+}
+.bola.b4::before{
+    content: "4";
+}
+.bola.b5::before{
+    content: "5";
+}
+.bola.b6::before{
+    content: "6";
+}
+.bola.b7::before{
+    content: "7";
+}
+.bola.b8::before{
+    content: "8";
+}
+.bola.b9::before{
+    content: "9";
+}
+.bola.b10::before{
+    content: "10";
+}
+.bola.b11::before{
+    content: "11";
+}
+.bola.b12::before{
+    content: "12";
+}
+.bola.b13::before{
+    content: "13";
+}
+.bola.b14::before{
+    content: "14";
+}
+.bola.b15::before{
+    content: "15";
+}
+
+
+.Pillos{
+    font-family: Staatliches, arial;
+    font-size: 30px;
+    text-align: center;
+    margin-top: 10px;
+    
+}
+
+.Total{
+
+    font-size: 20px;
+    text-align: right;
+    margin-right: 10px;
+}
+
+.btn{
+    background: #008000;
+    padding: 10px;
+    border: 3px dashed black;
+    border-radius:20px;
+    float: right;
+    font-family: Staatliches, arial;
+    color:white;
+    margin-left: 30px;
+}
+
+.botonModal{
+    color:black;
+    border: 3px solid black;
+    padding: 3px 5px;
+    margin: 30px 0px 0px 15px;
+    float: right;
+    border-radius: 15px;
+    text-decoration: none;
+}
+
+.NuevoJugador{
+    background-color:red;
+    
+    border: 4px solid white;
+    border-radius: 5px;
+    margin: 30px 20px;
+    padding: 30px;
+    color: white;
+    font-size: 30px;
+}
+
+.NuevoJugador input{
+    font-size: 30px;
+    
+    width: 100%;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Inicio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script> 
+    <script src="main.js"></script>
+</head>
+<body>
+    <header><h1>Oli</h1></header>
+    <form action="juego.html" method="GET">
+        <div class="NuevosJugadores">
+            <div class="NuevoJugador" id="jugador1">
+                <label for="NombreJugador">Nombre jugador</label>
+                <input type="text" name="J1" id="jugador">
+            </div>
+        </div>
+        <button class= "btn" id="btn_enviar"><h1>JUGAR!</h1></button>
+        <button class= "btn" id="btn_nuevoJugador">Agrega otro jugador</button>
+        
+    </form>
+    
+    <script>
+        $(document).ready(()=>{
+            var cant_jugadores = 2;
+
+            $("#btn_nuevoJugador").click(()=>{
+                var nuevo_jugador = $("#jugador1").clone();
+                nuevo_jugador.removeAttr("id").attr("id","jugador"+cant_jugadores);
+                nuevo_jugador[0].childNodes[3].name = "J"+cant_jugadores;
+                nuevo_jugador[0].childNodes[3].value = "";
+                $(".NuevosJugadores").append(nuevo_jugador);
+
+
+                cant_jugadores++;
+                return false;
+            });
+            
+        })
+    </script>
+</body>
+</html>
