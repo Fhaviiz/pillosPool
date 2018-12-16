@@ -170,6 +170,21 @@
                 siguienteTurno.addClass("Turno");
             }
         }
+
+        function pasarTurno2(){
+            VG_turno++;
+
+            if (VG_turno == cant_jugadores){
+                VG_turno = 1;
+                var siguienteTurno = $("#Jugador1");
+                $(".Turno").removeClass("Turno");
+                siguienteTurno.addClass("Turno");
+            }else{
+                var siguienteTurno = $(".Turno").next();
+                $(".Turno").removeClass("Turno");
+                siguienteTurno.addClass("Turno");
+            }
+        }
     </script>
 </body>
 </html>
